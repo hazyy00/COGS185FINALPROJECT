@@ -1,0 +1,163 @@
+experiment,variable,value,prompt,seed,clip_score,gen_time_sec,image_path
+exp1_cfg_scale,cfg_scale,1,a majestic lion in the savanna at sunset,42,0.6505,9.77,results\exp1_cfg_scale_cfg_scale_1_seed42_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,1,a majestic lion in the savanna at sunset,123,0.6396,5.41,results\exp1_cfg_scale_cfg_scale_1_seed123_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,1,a majestic lion in the savanna at sunset,999,0.6431,5.11,results\exp1_cfg_scale_cfg_scale_1_seed999_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,1,a futuristic city skyline with flying cars,42,0.6519,5.37,results\exp1_cfg_scale_cfg_scale_1_seed42_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,1,a futuristic city skyline with flying cars,123,0.6259,5.39,results\exp1_cfg_scale_cfg_scale_1_seed123_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,1,a futuristic city skyline with flying cars,999,0.6498,5.42,results\exp1_cfg_scale_cfg_scale_1_seed999_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,1,a cozy cabin in a snowy forest,42,0.6452,5.47,results\exp1_cfg_scale_cfg_scale_1_seed42_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,1,a cozy cabin in a snowy forest,123,0.6431,5.66,results\exp1_cfg_scale_cfg_scale_1_seed123_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,1,a cozy cabin in a snowy forest,999,0.6445,5.44,results\exp1_cfg_scale_cfg_scale_1_seed999_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,3,a majestic lion in the savanna at sunset,42,0.6688,9.08,results\exp1_cfg_scale_cfg_scale_3_seed42_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,3,a majestic lion in the savanna at sunset,123,0.65,9.08,results\exp1_cfg_scale_cfg_scale_3_seed123_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,3,a majestic lion in the savanna at sunset,999,0.6654,9.11,results\exp1_cfg_scale_cfg_scale_3_seed999_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,3,a futuristic city skyline with flying cars,42,0.6528,8.94,results\exp1_cfg_scale_cfg_scale_3_seed42_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,3,a futuristic city skyline with flying cars,123,0.6472,9.11,results\exp1_cfg_scale_cfg_scale_3_seed123_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,3,a futuristic city skyline with flying cars,999,0.6545,8.94,results\exp1_cfg_scale_cfg_scale_3_seed999_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,3,a cozy cabin in a snowy forest,42,0.6556,9.14,results\exp1_cfg_scale_cfg_scale_3_seed42_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,3,a cozy cabin in a snowy forest,123,0.6563,8.94,results\exp1_cfg_scale_cfg_scale_3_seed123_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,3,a cozy cabin in a snowy forest,999,0.6609,9.11,results\exp1_cfg_scale_cfg_scale_3_seed999_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,5,a majestic lion in the savanna at sunset,42,0.6683,8.96,results\exp1_cfg_scale_cfg_scale_5_seed42_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,5,a majestic lion in the savanna at sunset,123,0.6539,9.16,results\exp1_cfg_scale_cfg_scale_5_seed123_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,5,a majestic lion in the savanna at sunset,999,0.6713,8.98,results\exp1_cfg_scale_cfg_scale_5_seed999_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,5,a futuristic city skyline with flying cars,42,0.6575,9.17,results\exp1_cfg_scale_cfg_scale_5_seed42_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,5,a futuristic city skyline with flying cars,123,0.661,8.99,results\exp1_cfg_scale_cfg_scale_5_seed123_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,5,a futuristic city skyline with flying cars,999,0.6663,9.2,results\exp1_cfg_scale_cfg_scale_5_seed999_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,5,a cozy cabin in a snowy forest,42,0.6527,9.02,results\exp1_cfg_scale_cfg_scale_5_seed42_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,5,a cozy cabin in a snowy forest,123,0.6512,9.23,results\exp1_cfg_scale_cfg_scale_5_seed123_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,5,a cozy cabin in a snowy forest,999,0.6583,9.04,results\exp1_cfg_scale_cfg_scale_5_seed999_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,7,a majestic lion in the savanna at sunset,42,0.6667,9.2,results\exp1_cfg_scale_cfg_scale_7_seed42_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,7,a majestic lion in the savanna at sunset,123,0.6558,9.05,results\exp1_cfg_scale_cfg_scale_7_seed123_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,7,a majestic lion in the savanna at sunset,999,0.6672,10.24,results\exp1_cfg_scale_cfg_scale_7_seed999_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,7,a futuristic city skyline with flying cars,42,0.6609,9.84,results\exp1_cfg_scale_cfg_scale_7_seed42_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,7,a futuristic city skyline with flying cars,123,0.6665,9.18,results\exp1_cfg_scale_cfg_scale_7_seed123_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,7,a futuristic city skyline with flying cars,999,0.6676,9.22,results\exp1_cfg_scale_cfg_scale_7_seed999_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,7,a cozy cabin in a snowy forest,42,0.6532,9.17,results\exp1_cfg_scale_cfg_scale_7_seed42_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,7,a cozy cabin in a snowy forest,123,0.65,9.28,results\exp1_cfg_scale_cfg_scale_7_seed123_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,7,a cozy cabin in a snowy forest,999,0.658,9.11,results\exp1_cfg_scale_cfg_scale_7_seed999_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,10,a majestic lion in the savanna at sunset,42,0.6709,9.25,results\exp1_cfg_scale_cfg_scale_10_seed42_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,10,a majestic lion in the savanna at sunset,123,0.6539,9.07,results\exp1_cfg_scale_cfg_scale_10_seed123_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,10,a majestic lion in the savanna at sunset,999,0.6699,9.29,results\exp1_cfg_scale_cfg_scale_10_seed999_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,10,a futuristic city skyline with flying cars,42,0.6652,9.13,results\exp1_cfg_scale_cfg_scale_10_seed42_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,10,a futuristic city skyline with flying cars,123,0.6668,9.51,results\exp1_cfg_scale_cfg_scale_10_seed123_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,10,a futuristic city skyline with flying cars,999,0.6604,9.23,results\exp1_cfg_scale_cfg_scale_10_seed999_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,10,a cozy cabin in a snowy forest,42,0.661,9.15,results\exp1_cfg_scale_cfg_scale_10_seed42_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,10,a cozy cabin in a snowy forest,123,0.647,9.12,results\exp1_cfg_scale_cfg_scale_10_seed123_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,10,a cozy cabin in a snowy forest,999,0.6583,9.25,results\exp1_cfg_scale_cfg_scale_10_seed999_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,15,a majestic lion in the savanna at sunset,42,0.6737,9.62,results\exp1_cfg_scale_cfg_scale_15_seed42_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,15,a majestic lion in the savanna at sunset,123,0.6585,9.44,results\exp1_cfg_scale_cfg_scale_15_seed123_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,15,a majestic lion in the savanna at sunset,999,0.6688,9.88,results\exp1_cfg_scale_cfg_scale_15_seed999_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,15,a futuristic city skyline with flying cars,42,0.6656,9.42,results\exp1_cfg_scale_cfg_scale_15_seed42_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,15,a futuristic city skyline with flying cars,123,0.6734,9.65,results\exp1_cfg_scale_cfg_scale_15_seed123_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,15,a futuristic city skyline with flying cars,999,0.6627,9.72,results\exp1_cfg_scale_cfg_scale_15_seed999_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,15,a cozy cabin in a snowy forest,42,0.6583,9.53,results\exp1_cfg_scale_cfg_scale_15_seed42_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,15,a cozy cabin in a snowy forest,123,0.6538,9.68,results\exp1_cfg_scale_cfg_scale_15_seed123_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,15,a cozy cabin in a snowy forest,999,0.6581,9.48,results\exp1_cfg_scale_cfg_scale_15_seed999_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,20,a majestic lion in the savanna at sunset,42,0.6723,9.48,results\exp1_cfg_scale_cfg_scale_20_seed42_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,20,a majestic lion in the savanna at sunset,123,0.6605,9.13,results\exp1_cfg_scale_cfg_scale_20_seed123_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,20,a majestic lion in the savanna at sunset,999,0.6547,9.43,results\exp1_cfg_scale_cfg_scale_20_seed999_a_majestic_lion_in_t.png
+exp1_cfg_scale,cfg_scale,20,a futuristic city skyline with flying cars,42,0.6717,9.67,results\exp1_cfg_scale_cfg_scale_20_seed42_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,20,a futuristic city skyline with flying cars,123,0.6654,9.55,results\exp1_cfg_scale_cfg_scale_20_seed123_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,20,a futuristic city skyline with flying cars,999,0.6628,9.65,results\exp1_cfg_scale_cfg_scale_20_seed999_a_futuristic_city_sk.png
+exp1_cfg_scale,cfg_scale,20,a cozy cabin in a snowy forest,42,0.6596,9.49,results\exp1_cfg_scale_cfg_scale_20_seed42_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,20,a cozy cabin in a snowy forest,123,0.6601,9.6,results\exp1_cfg_scale_cfg_scale_20_seed123_a_cozy_cabin_in_a_sn.png
+exp1_cfg_scale,cfg_scale,20,a cozy cabin in a snowy forest,999,0.6546,9.43,results\exp1_cfg_scale_cfg_scale_20_seed999_a_cozy_cabin_in_a_sn.png
+exp2_steps,steps,10,a majestic lion in the savanna at sunset,42,0.6675,4.82,results\exp2_steps_steps_10_seed42_a_majestic_lion_in_t.png
+exp2_steps,steps,10,a majestic lion in the savanna at sunset,123,0.6586,4.73,results\exp2_steps_steps_10_seed123_a_majestic_lion_in_t.png
+exp2_steps,steps,10,a majestic lion in the savanna at sunset,999,0.6591,4.7,results\exp2_steps_steps_10_seed999_a_majestic_lion_in_t.png
+exp2_steps,steps,10,a futuristic city skyline with flying cars,42,0.6606,4.54,results\exp2_steps_steps_10_seed42_a_futuristic_city_sk.png
+exp2_steps,steps,10,a futuristic city skyline with flying cars,123,0.6643,4.79,results\exp2_steps_steps_10_seed123_a_futuristic_city_sk.png
+exp2_steps,steps,10,a futuristic city skyline with flying cars,999,0.6648,4.77,results\exp2_steps_steps_10_seed999_a_futuristic_city_sk.png
+exp2_steps,steps,10,a cozy cabin in a snowy forest,42,0.6503,4.77,results\exp2_steps_steps_10_seed42_a_cozy_cabin_in_a_sn.png
+exp2_steps,steps,10,a cozy cabin in a snowy forest,123,0.6556,4.59,results\exp2_steps_steps_10_seed123_a_cozy_cabin_in_a_sn.png
+exp2_steps,steps,10,a cozy cabin in a snowy forest,999,0.6582,4.79,results\exp2_steps_steps_10_seed999_a_cozy_cabin_in_a_sn.png
+exp2_steps,steps,15,a majestic lion in the savanna at sunset,42,0.6692,6.95,results\exp2_steps_steps_15_seed42_a_majestic_lion_in_t.png
+exp2_steps,steps,15,a majestic lion in the savanna at sunset,123,0.6541,6.75,results\exp2_steps_steps_15_seed123_a_majestic_lion_in_t.png
+exp2_steps,steps,15,a majestic lion in the savanna at sunset,999,0.6701,6.99,results\exp2_steps_steps_15_seed999_a_majestic_lion_in_t.png
+exp2_steps,steps,15,a futuristic city skyline with flying cars,42,0.6596,6.99,results\exp2_steps_steps_15_seed42_a_futuristic_city_sk.png
+exp2_steps,steps,15,a futuristic city skyline with flying cars,123,0.6687,6.76,results\exp2_steps_steps_15_seed123_a_futuristic_city_sk.png
+exp2_steps,steps,15,a futuristic city skyline with flying cars,999,0.6663,7.0,results\exp2_steps_steps_15_seed999_a_futuristic_city_sk.png
+exp2_steps,steps,15,a cozy cabin in a snowy forest,42,0.652,6.96,results\exp2_steps_steps_15_seed42_a_cozy_cabin_in_a_sn.png
+exp2_steps,steps,15,a cozy cabin in a snowy forest,123,0.653,6.12,results\exp2_steps_steps_15_seed123_a_cozy_cabin_in_a_sn.png
+exp2_steps,steps,15,a cozy cabin in a snowy forest,999,0.657,6.76,results\exp2_steps_steps_15_seed999_a_cozy_cabin_in_a_sn.png
+exp2_steps,steps,20,a majestic lion in the savanna at sunset,42,0.6691,8.98,results\exp2_steps_steps_20_seed42_a_majestic_lion_in_t.png
+exp2_steps,steps,20,a majestic lion in the savanna at sunset,123,0.6571,8.89,results\exp2_steps_steps_20_seed123_a_majestic_lion_in_t.png
+exp2_steps,steps,20,a majestic lion in the savanna at sunset,999,0.6729,8.98,results\exp2_steps_steps_20_seed999_a_majestic_lion_in_t.png
+exp2_steps,steps,20,a futuristic city skyline with flying cars,42,0.6632,8.91,results\exp2_steps_steps_20_seed42_a_futuristic_city_sk.png
+exp2_steps,steps,20,a futuristic city skyline with flying cars,123,0.6676,9.01,results\exp2_steps_steps_20_seed123_a_futuristic_city_sk.png
+exp2_steps,steps,20,a futuristic city skyline with flying cars,999,0.6589,9.02,results\exp2_steps_steps_20_seed999_a_futuristic_city_sk.png
+exp2_steps,steps,20,a cozy cabin in a snowy forest,42,0.6516,8.87,results\exp2_steps_steps_20_seed42_a_cozy_cabin_in_a_sn.png
+exp2_steps,steps,20,a cozy cabin in a snowy forest,123,0.6487,9.04,results\exp2_steps_steps_20_seed123_a_cozy_cabin_in_a_sn.png
+exp2_steps,steps,20,a cozy cabin in a snowy forest,999,0.6573,8.92,results\exp2_steps_steps_20_seed999_a_cozy_cabin_in_a_sn.png
+exp2_steps,steps,30,a majestic lion in the savanna at sunset,42,0.6703,13.49,results\exp2_steps_steps_30_seed42_a_majestic_lion_in_t.png
+exp2_steps,steps,30,a majestic lion in the savanna at sunset,123,0.655,13.35,results\exp2_steps_steps_30_seed123_a_majestic_lion_in_t.png
+exp2_steps,steps,30,a majestic lion in the savanna at sunset,999,0.6736,13.52,results\exp2_steps_steps_30_seed999_a_majestic_lion_in_t.png
+exp2_steps,steps,30,a futuristic city skyline with flying cars,42,0.663,13.44,results\exp2_steps_steps_30_seed42_a_futuristic_city_sk.png
+exp2_steps,steps,30,a futuristic city skyline with flying cars,123,0.6657,13.36,results\exp2_steps_steps_30_seed123_a_futuristic_city_sk.png
+exp2_steps,steps,30,a futuristic city skyline with flying cars,999,0.6642,13.51,results\exp2_steps_steps_30_seed999_a_futuristic_city_sk.png
+exp2_steps,steps,30,a cozy cabin in a snowy forest,42,0.6557,13.4,results\exp2_steps_steps_30_seed42_a_cozy_cabin_in_a_sn.png
+exp2_steps,steps,30,a cozy cabin in a snowy forest,123,0.6493,13.37,results\exp2_steps_steps_30_seed123_a_cozy_cabin_in_a_sn.png
+exp2_steps,steps,30,a cozy cabin in a snowy forest,999,0.6599,13.54,results\exp2_steps_steps_30_seed999_a_cozy_cabin_in_a_sn.png
+exp2_steps,steps,50,a majestic lion in the savanna at sunset,42,0.6704,22.13,results\exp2_steps_steps_50_seed42_a_majestic_lion_in_t.png
+exp2_steps,steps,50,a majestic lion in the savanna at sunset,123,0.6502,23.52,results\exp2_steps_steps_50_seed123_a_majestic_lion_in_t.png
+exp2_steps,steps,50,a majestic lion in the savanna at sunset,999,0.6719,24.42,results\exp2_steps_steps_50_seed999_a_majestic_lion_in_t.png
+exp2_steps,steps,50,a futuristic city skyline with flying cars,42,0.6623,24.18,results\exp2_steps_steps_50_seed42_a_futuristic_city_sk.png
+exp2_steps,steps,50,a futuristic city skyline with flying cars,123,0.6668,23.56,results\exp2_steps_steps_50_seed123_a_futuristic_city_sk.png
+exp2_steps,steps,50,a futuristic city skyline with flying cars,999,0.6673,23.54,results\exp2_steps_steps_50_seed999_a_futuristic_city_sk.png
+exp2_steps,steps,50,a cozy cabin in a snowy forest,42,0.6571,23.56,results\exp2_steps_steps_50_seed42_a_cozy_cabin_in_a_sn.png
+exp2_steps,steps,50,a cozy cabin in a snowy forest,123,0.6531,23.63,results\exp2_steps_steps_50_seed123_a_cozy_cabin_in_a_sn.png
+exp2_steps,steps,50,a cozy cabin in a snowy forest,999,0.6579,23.6,results\exp2_steps_steps_50_seed999_a_cozy_cabin_in_a_sn.png
+exp3_scheduler,scheduler,DDIM,a majestic lion in the savanna at sunset,42,0.6691,99.08,results\exp3_scheduler_scheduler_DDIM_seed42_a_majestic_lion_in_t.png
+exp3_scheduler,scheduler,DDIM,a majestic lion in the savanna at sunset,123,0.6571,80.39,results\exp3_scheduler_scheduler_DDIM_seed123_a_majestic_lion_in_t.png
+exp3_scheduler,scheduler,DDIM,a majestic lion in the savanna at sunset,999,0.6729,88.55,results\exp3_scheduler_scheduler_DDIM_seed999_a_majestic_lion_in_t.png
+exp3_scheduler,scheduler,DDIM,a futuristic city skyline with flying cars,42,0.6632,36.54,results\exp3_scheduler_scheduler_DDIM_seed42_a_futuristic_city_sk.png
+exp3_scheduler,scheduler,DDIM,a futuristic city skyline with flying cars,123,0.6676,16.9,results\exp3_scheduler_scheduler_DDIM_seed123_a_futuristic_city_sk.png
+exp3_scheduler,scheduler,DDIM,a futuristic city skyline with flying cars,999,0.6589,38.67,results\exp3_scheduler_scheduler_DDIM_seed999_a_futuristic_city_sk.png
+exp3_scheduler,scheduler,DDIM,a cozy cabin in a snowy forest,42,0.6516,51.94,results\exp3_scheduler_scheduler_DDIM_seed42_a_cozy_cabin_in_a_sn.png
+exp3_scheduler,scheduler,DDIM,a cozy cabin in a snowy forest,123,0.6487,31.45,results\exp3_scheduler_scheduler_DDIM_seed123_a_cozy_cabin_in_a_sn.png
+exp3_scheduler,scheduler,DDIM,a cozy cabin in a snowy forest,999,0.6573,30.62,results\exp3_scheduler_scheduler_DDIM_seed999_a_cozy_cabin_in_a_sn.png
+exp3_scheduler,scheduler,PNDM,a majestic lion in the savanna at sunset,42,0.6509,47.07,results\exp3_scheduler_scheduler_PNDM_seed42_a_majestic_lion_in_t.png
+exp3_scheduler,scheduler,PNDM,a majestic lion in the savanna at sunset,123,0.6541,58.62,results\exp3_scheduler_scheduler_PNDM_seed123_a_majestic_lion_in_t.png
+exp3_scheduler,scheduler,PNDM,a majestic lion in the savanna at sunset,999,0.6697,23.14,results\exp3_scheduler_scheduler_PNDM_seed999_a_majestic_lion_in_t.png
+exp3_scheduler,scheduler,PNDM,a futuristic city skyline with flying cars,42,0.6643,33.82,results\exp3_scheduler_scheduler_PNDM_seed42_a_futuristic_city_sk.png
+exp3_scheduler,scheduler,PNDM,a futuristic city skyline with flying cars,123,0.6674,72.31,results\exp3_scheduler_scheduler_PNDM_seed123_a_futuristic_city_sk.png
+exp3_scheduler,scheduler,PNDM,a futuristic city skyline with flying cars,999,0.6613,68.56,results\exp3_scheduler_scheduler_PNDM_seed999_a_futuristic_city_sk.png
+exp3_scheduler,scheduler,PNDM,a cozy cabin in a snowy forest,42,0.6526,33.4,results\exp3_scheduler_scheduler_PNDM_seed42_a_cozy_cabin_in_a_sn.png
+exp3_scheduler,scheduler,PNDM,a cozy cabin in a snowy forest,123,0.6517,91.32,results\exp3_scheduler_scheduler_PNDM_seed123_a_cozy_cabin_in_a_sn.png
+exp3_scheduler,scheduler,PNDM,a cozy cabin in a snowy forest,999,0.6593,38.65,results\exp3_scheduler_scheduler_PNDM_seed999_a_cozy_cabin_in_a_sn.png
+exp3_scheduler,scheduler,DPM++2M,a majestic lion in the savanna at sunset,42,0.6673,43.79,results\exp3_scheduler_scheduler_DPM++2M_seed42_a_majestic_lion_in_t.png
+exp3_scheduler,scheduler,DPM++2M,a majestic lion in the savanna at sunset,123,0.6531,33.44,results\exp3_scheduler_scheduler_DPM++2M_seed123_a_majestic_lion_in_t.png
+exp3_scheduler,scheduler,DPM++2M,a majestic lion in the savanna at sunset,999,0.6745,72.6,results\exp3_scheduler_scheduler_DPM++2M_seed999_a_majestic_lion_in_t.png
+exp3_scheduler,scheduler,DPM++2M,a futuristic city skyline with flying cars,42,0.6621,31.45,results\exp3_scheduler_scheduler_DPM++2M_seed42_a_futuristic_city_sk.png
+exp3_scheduler,scheduler,DPM++2M,a futuristic city skyline with flying cars,123,0.6666,32.98,results\exp3_scheduler_scheduler_DPM++2M_seed123_a_futuristic_city_sk.png
+exp3_scheduler,scheduler,DPM++2M,a futuristic city skyline with flying cars,999,0.6618,36.93,results\exp3_scheduler_scheduler_DPM++2M_seed999_a_futuristic_city_sk.png
+exp3_scheduler,scheduler,DPM++2M,a cozy cabin in a snowy forest,42,0.6592,24.73,results\exp3_scheduler_scheduler_DPM++2M_seed42_a_cozy_cabin_in_a_sn.png
+exp3_scheduler,scheduler,DPM++2M,a cozy cabin in a snowy forest,123,0.6455,19.73,results\exp3_scheduler_scheduler_DPM++2M_seed123_a_cozy_cabin_in_a_sn.png
+exp3_scheduler,scheduler,DPM++2M,a cozy cabin in a snowy forest,999,0.6582,29.55,results\exp3_scheduler_scheduler_DPM++2M_seed999_a_cozy_cabin_in_a_sn.png
+exp3_scheduler,scheduler,Euler,a majestic lion in the savanna at sunset,42,0.6698,22.79,results\exp3_scheduler_scheduler_Euler_seed42_a_majestic_lion_in_t.png
+exp3_scheduler,scheduler,Euler,a majestic lion in the savanna at sunset,123,0.6555,40.64,results\exp3_scheduler_scheduler_Euler_seed123_a_majestic_lion_in_t.png
+exp3_scheduler,scheduler,Euler,a majestic lion in the savanna at sunset,999,0.6705,57.95,results\exp3_scheduler_scheduler_Euler_seed999_a_majestic_lion_in_t.png
+exp3_scheduler,scheduler,Euler,a futuristic city skyline with flying cars,42,0.664,63.33,results\exp3_scheduler_scheduler_Euler_seed42_a_futuristic_city_sk.png
+exp3_scheduler,scheduler,Euler,a futuristic city skyline with flying cars,123,0.6619,37.42,results\exp3_scheduler_scheduler_Euler_seed123_a_futuristic_city_sk.png
+exp3_scheduler,scheduler,Euler,a futuristic city skyline with flying cars,999,0.6631,61.03,results\exp3_scheduler_scheduler_Euler_seed999_a_futuristic_city_sk.png
+exp3_scheduler,scheduler,Euler,a cozy cabin in a snowy forest,42,0.6651,74.09,results\exp3_scheduler_scheduler_Euler_seed42_a_cozy_cabin_in_a_sn.png
+exp3_scheduler,scheduler,Euler,a cozy cabin in a snowy forest,123,0.6443,33.5,results\exp3_scheduler_scheduler_Euler_seed123_a_cozy_cabin_in_a_sn.png
+exp3_scheduler,scheduler,Euler,a cozy cabin in a snowy forest,999,0.657,72.37,results\exp3_scheduler_scheduler_Euler_seed999_a_cozy_cabin_in_a_sn.png
+exp5_model,model,CompVis/stable-diffusion-v1-4,a majestic lion in the savanna at sunset,42,0.6713,9.53,results\exp5_model_model_CompVis-stable-diffusion-v1-4_seed42_a_majestic_lion_in_t.png
+exp5_model,model,CompVis/stable-diffusion-v1-4,a majestic lion in the savanna at sunset,123,0.6487,12.07,results\exp5_model_model_CompVis-stable-diffusion-v1-4_seed123_a_majestic_lion_in_t.png
+exp5_model,model,CompVis/stable-diffusion-v1-4,a majestic lion in the savanna at sunset,999,0.6666,14.02,results\exp5_model_model_CompVis-stable-diffusion-v1-4_seed999_a_majestic_lion_in_t.png
+exp5_model,model,CompVis/stable-diffusion-v1-4,a futuristic city skyline with flying cars,42,0.6574,14.7,results\exp5_model_model_CompVis-stable-diffusion-v1-4_seed42_a_futuristic_city_sk.png
+exp5_model,model,CompVis/stable-diffusion-v1-4,a futuristic city skyline with flying cars,123,0.6552,16.03,results\exp5_model_model_CompVis-stable-diffusion-v1-4_seed123_a_futuristic_city_sk.png
+exp5_model,model,CompVis/stable-diffusion-v1-4,a futuristic city skyline with flying cars,999,0.6662,16.8,results\exp5_model_model_CompVis-stable-diffusion-v1-4_seed999_a_futuristic_city_sk.png
+exp5_model,model,CompVis/stable-diffusion-v1-4,a cozy cabin in a snowy forest,42,0.6598,14.84,results\exp5_model_model_CompVis-stable-diffusion-v1-4_seed42_a_cozy_cabin_in_a_sn.png
+exp5_model,model,CompVis/stable-diffusion-v1-4,a cozy cabin in a snowy forest,123,0.6632,13.14,results\exp5_model_model_CompVis-stable-diffusion-v1-4_seed123_a_cozy_cabin_in_a_sn.png
+exp5_model,model,CompVis/stable-diffusion-v1-4,a cozy cabin in a snowy forest,999,0.6563,12.26,results\exp5_model_model_CompVis-stable-diffusion-v1-4_seed999_a_cozy_cabin_in_a_sn.png
+exp5_model,model,runwayml/stable-diffusion-v1-5,a majestic lion in the savanna at sunset,42,0.6691,15.18,results\exp5_model_model_runwayml-stable-diffusion-v1-5_seed42_a_majestic_lion_in_t.png
+exp5_model,model,runwayml/stable-diffusion-v1-5,a majestic lion in the savanna at sunset,123,0.6571,12.32,results\exp5_model_model_runwayml-stable-diffusion-v1-5_seed123_a_majestic_lion_in_t.png
+exp5_model,model,runwayml/stable-diffusion-v1-5,a majestic lion in the savanna at sunset,999,0.6729,10.35,results\exp5_model_model_runwayml-stable-diffusion-v1-5_seed999_a_majestic_lion_in_t.png
+exp5_model,model,runwayml/stable-diffusion-v1-5,a futuristic city skyline with flying cars,42,0.6632,9.63,results\exp5_model_model_runwayml-stable-diffusion-v1-5_seed42_a_futuristic_city_sk.png
+exp5_model,model,runwayml/stable-diffusion-v1-5,a futuristic city skyline with flying cars,123,0.6676,12.66,results\exp5_model_model_runwayml-stable-diffusion-v1-5_seed123_a_futuristic_city_sk.png
+exp5_model,model,runwayml/stable-diffusion-v1-5,a futuristic city skyline with flying cars,999,0.6589,20.45,results\exp5_model_model_runwayml-stable-diffusion-v1-5_seed999_a_futuristic_city_sk.png
+exp5_model,model,runwayml/stable-diffusion-v1-5,a cozy cabin in a snowy forest,42,0.6516,12.15,results\exp5_model_model_runwayml-stable-diffusion-v1-5_seed42_a_cozy_cabin_in_a_sn.png
+exp5_model,model,runwayml/stable-diffusion-v1-5,a cozy cabin in a snowy forest,123,0.6487,11.26,results\exp5_model_model_runwayml-stable-diffusion-v1-5_seed123_a_cozy_cabin_in_a_sn.png
+exp5_model,model,runwayml/stable-diffusion-v1-5,a cozy cabin in a snowy forest,999,0.6573,9.4,results\exp5_model_model_runwayml-stable-diffusion-v1-5_seed999_a_cozy_cabin_in_a_sn.png
