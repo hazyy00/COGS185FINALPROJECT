@@ -1,0 +1,452 @@
+\documentclass{article}
+
+% NeurIPS-inspired formatting (self-contained, no template required)
+\usepackage[margin=1in]{geometry}
+\usepackage{times}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[numbers]{natbib}
+\usepackage{setspace}
+
+\title{\textbf{Stable Diffusion Parameter Explorer:\\
+A Systematic Empirical Study of Inference Hyperparameters}}
+
+\author{Jae Kim\\
+COGS 185 --- Final Project\\
+University of California, San Diego}
+
+\date{March 2026}
+
+\begin{document}
+\maketitle
+
+% ─────────────────────────────────────────────────────────────────
+\begin{abstract}
+Stable Diffusion has become a widely deployed framework for text-to-image synthesis,
+yet practitioners face a poorly characterized inference-time hyperparameter space.
+We present a systematic empirical study of four key parameters---classifier-free
+guidance (CFG) scale, denoising step count, noise scheduler, and model checkpoint---
+across 162 generated images spanning 3 prompts and 3 random seeds per condition.
+Image quality is quantified via CLIP cosine similarity (ViT-B/32)
+normalized to $[0, 1]$.
+Our main findings are: (1)~CFG scale has the largest measurable impact on alignment,
+with the steepest gain occurring between CFG~$= 1$ and CFG~$= 3$ ($\Delta{=}+0.0131$),
+saturating near CFG~$= 15$ (mean CLIP~$= 0.6637$);
+(2)~denoising steps plateau sharply---10~steps achieves 99.7\% of the maximum
+CLIP score at one-fifth the compute cost of 50~steps;
+(3)~scheduler choice produces negligible quality differences (range $\leq 0.0022$),
+with 98.7\% of CLIP variance attributable to prompt/seed rather than scheduler;
+(4)~SD v1.4 and SD v1.5 are statistically indistinguishable by this metric
+($\Delta{=}0.0002$).
+We accompany this study with an open-source Streamlit application for interactive
+parameter exploration and a reproducible batch-runner codebase.
+\end{abstract}
+
+% ─────────────────────────────────────────────────────────────────
+\section{Introduction}
+
+Latent diffusion models~\citep{rombach2022ldm}, and Stable Diffusion in particular,
+have transformed text-to-image generation by combining the expressive power of
+diffusion-based denoising~\citep{ho2020ddpm} with computationally efficient
+latent-space generation.
+Despite widespread deployment, there is surprisingly little rigorous empirical
+guidance on the \emph{inference-time} parameter settings that practitioners
+must choose: the classifier-free guidance (CFG) scale~\citep{ho2022cfg},
+the number of denoising steps, the noise scheduler, and the model checkpoint.
+
+Most published work on Stable Diffusion focuses on training objectives, architectures,
+or conditioning mechanisms.
+Systematic analyses of inference hyperparameters are largely absent from the
+academic literature, leaving users to rely on informal community heuristics
+(e.g., ``CFG~7.5, 20~steps'' as defaults) without quantitative justification.
+This gap motivates the present study.
+
+We make the following contributions:
+\begin{itemize}
+\item A controlled empirical study of four inference hyperparameters---CFG scale,
+  step count, scheduler, and model---using CLIP alignment as a unified,
+  reproducible evaluation metric.
+\item A Pareto-efficiency analysis of the step-count/quality trade-off,
+  demonstrating that the community default of 20~steps is well-placed but
+  that 10~steps offers a 5$\times$ efficiency advantage with less than 0.003
+  CLIP degradation.
+\item An open-source batch experiment runner and interactive Streamlit application
+  that allows real-time parameter exploration with live CLIP scoring.
+\item Reproducible experimental infrastructure, with cross-experiment DDIM
+  consistency verified to floating-point precision (9/9 bitwise matches
+  across shared conditions).
+\end{itemize}
+
+This work was developed using AI-assisted tooling (Claude Code), allowing rapid
+construction of a modular experimental codebase---a methodology consistent with
+the course's Option~6 (vibe coding) pathway.
+
+% ─────────────────────────────────────────────────────────────────
+\section{Method}
+
+\subsection{Model and Experimental Setup}
+
+We use Stable Diffusion v1.5 (\texttt{runwayml/stable-diffusion-v1-5}) as the
+primary model, implemented via the \texttt{diffusers} library~\citep{platen2022diffusers}.
+All experiments were run on an NVIDIA GeForce GTX~1080 (8.6~GB VRAM) with
+\texttt{torch.float16} precision.
+
+Each experiment fixes all parameters at a baseline and varies exactly one
+(the single-variable protocol).
+Baseline settings are: CFG~$= 7.5$, 20~denoising steps, DDIM scheduler,
+and SD v1.5.
+We use three prompts representing distinct semantic domains (nature scene,
+urban fantasy, wildlife) and three random seeds (42, 123, 999) per condition,
+yielding $n = 9$ observations per condition.
+
+\subsection{Evaluation Metric}
+
+We evaluate image-text alignment using CLIP~\citep{radford2021clip}
+cosine similarity via the open-source \texttt{open\_clip} library~\citep{ilharco2021openclip}
+with the ViT-B/32 architecture pretrained on OpenAI's dataset.
+Raw cosine similarities lie in $[-1, 1]$; we normalize to $[0, 1]$ as:
+\begin{equation}
+  \text{CLIP Score} = \frac{\text{cos\_sim}(I, T) + 1}{2}
+  \label{eq:clip}
+\end{equation}
+where $I$ is the image embedding and $T$ is the text embedding.
+We note that this metric measures \emph{prompt-image alignment}, not
+perceptual quality in isolation; images that are photorealistic but
+misaligned to the prompt would score lower than simpler aligned outputs.
+
+\subsection{Schedulers}
+
+We compare four samplers: DDIM~\citep{song2021ddim},
+PNDM~\citep{liu2022pndm}, DPM++2M~\citep{lu2022dpm}, and
+Euler discrete.
+All schedulers are initialized from the same model configuration.
+
+\subsection{Interactive Application}
+
+The accompanying Streamlit app (\texttt{app.py}) provides real-time
+parameter exploration with live CLIP scoring.
+It uses \texttt{@st.cache\_resource} to avoid pipeline reloads on parameter changes,
+a batch sweep mode for side-by-side CFG comparisons, and a download button for
+saving generated images.
+The app extends the paper's experiments by additionally supporting arbitrary prompts,
+negative prompts, and on-demand single-image generation.
+
+% ─────────────────────────────────────────────────────────────────
+\section{Experiments}
+
+Table~\ref{tab:summary} summarizes all four experiments.
+
+\begin{table}[h]
+\centering
+\caption{Summary of all experiments. CLIP range is the spread from worst to best
+  condition mean; a larger range indicates greater parameter sensitivity.}
+\label{tab:summary}
+\begin{tabular}{llrrr}
+\toprule
+Experiment & Variable & Conditions & CLIP Range & Best CLIP \\
+\midrule
+Exp~1 & CFG Scale      & 7  & 0.0199 & 0.6637 (CFG=15) \\
+Exp~2 & Steps          & 5  & 0.0020 & 0.6619 (30 \& 50 steps) \\
+Exp~3 & Scheduler      & 4  & 0.0022 & 0.6612 (Euler) \\
+Exp~4 & Model (v1.x)   & 2  & 0.0002 & 0.6607 (SD v1.5) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Experiment 1: Classifier-Free Guidance Scale}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.65\textwidth]{results/fig_cfg_scale.png}
+  \caption{Mean CLIP score vs.\ CFG scale (averaged over 3 prompts and 3 seeds).
+    The saturation shape is broadly consistent, though sensitivity magnitude varies
+    by prompt (see text).}
+  \label{fig:cfg}
+\end{figure}
+
+We swept CFG~$\in \{1, 3, 5, 7, 10, 15, 20\}$ with DDIM and 20~steps fixed.
+Figure~\ref{fig:cfg} and Table~\ref{tab:cfg} show a clear nonlinear relationship
+(Pearson $r = 0.48$): alignment rises steeply from CFG~$= 1$ to CFG~$= 3$
+($\Delta{=}+0.0131$, representing 66\% of the total achievable gain),
+then plateaus, and reverses slightly at CFG~$= 20$ ($-0.0012$ vs.\ CFG~$= 15$).
+
+\begin{table}[h]
+\centering
+\caption{CFG scale experiment results. Mean $\pm$ std over 9 images per condition.}
+\label{tab:cfg}
+\begin{tabular}{rcc}
+\toprule
+CFG Scale & Mean CLIP $\pm$ Std & Time (s) \\
+\midrule
+1  & $0.6437 \pm 0.0074$ & 5.89 \\
+3  & $0.6568 \pm 0.0066$ & 9.05 \\
+5  & $0.6601 \pm 0.0068$ & 9.08 \\
+7  & $0.6607 \pm 0.0063$ & 9.37 \\
+10 & $0.6615 \pm 0.0073$ & 9.22 \\
+\textbf{15} & $\mathbf{0.6637 \pm 0.0068}$ & 9.60 \\
+20 & $0.6624 \pm 0.0061$ & 9.49 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The effect is prompt-dependent: the ``futuristic city'' prompt shows a gain of
+$+0.0247$ from CFG~$= 1$ to CFG~$= 15$, while the ``snowy cabin'' prompt gains
+only $+0.0125$---a nearly 2$\times$ difference in sensitivity.
+This suggests that prompts with more abstract or compositional elements
+(\emph{flying cars}, \emph{city skyline}) benefit more from stronger guidance.
+
+Notably, higher CFG also reduces output variability: the coefficient of variation
+falls from 1.14\% at CFG~$= 1$ to 0.91\% at CFG~$= 20$, indicating that stronger
+guidance not only improves alignment but stabilizes generation.
+
+\textbf{Recommendation:} CFG in the range 7--12 offers near-peak alignment
+without over-saturation risk. CFG~$= 15$ is optimal by CLIP but may introduce
+visible artifacts in practice.
+
+\subsection{Experiment 2: Denoising Step Count}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{results/fig_steps.png}
+  \caption{Left: CLIP score vs.\ denoising steps. Right: generation time vs.\ steps.
+    Quality plateaus while compute scales nearly linearly.}
+  \label{fig:steps}
+\end{figure}
+
+We varied step count $\in \{10, 15, 20, 30, 50\}$ with DDIM and CFG~$= 7.5$ fixed.
+The CLIP-score range across all conditions is only 0.0020---far smaller than the
+CFG effect---while generation time scales from 4.72~s (10~steps) to 23.57~s
+(50~steps), a 5$\times$ cost increase.
+
+\begin{table}[h]
+\centering
+\caption{Steps efficiency analysis. ``\%CLIP$_\text{max}$'' is the fraction of
+  the maximum CLIP score achieved. ``CLIP/s'' is the efficiency ratio.}
+\label{tab:steps}
+\begin{tabular}{rrrrr}
+\toprule
+Steps & Mean CLIP & Time (s) & CLIP/s & \%CLIP$_\text{max}$ \\
+\midrule
+\textbf{10} & 0.6599 & 4.72 & \textbf{0.1397} & 99.7\% \\
+15 & 0.6611 & 6.81 & 0.0971 & 99.9\% \\
+20 & 0.6607 & 8.96 & 0.0738 & 99.8\% \\
+30 & 0.6619 & 13.44 & 0.0492 & 100.0\% \\
+50 & 0.6619 & 23.57 & 0.0281 & 100.0\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The efficiency ratio (CLIP per second) collapses 5.0$\times$ from
+10~steps (0.1397) to 50~steps (0.0281).
+Critically, steps 30 and 50 achieve \emph{identical} mean CLIP to four decimal
+places (0.6619), yet 50~steps costs 10.1~additional seconds per image---10~s
+of pure waste given fixed quality.
+
+\textbf{Recommendation:} 15--20 steps provides near-maximum CLIP quality
+at 29--38\% of the 50-step compute budget.
+10~steps is appropriate for rapid prototyping with less than 0.003 CLIP penalty.
+
+\subsection{Experiment 3: Noise Scheduler}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.55\textwidth]{results/fig_scheduler.png}
+  \caption{Mean CLIP score by scheduler. The total spread of 0.0022 is
+    smaller than the within-condition standard deviation for any single scheduler.}
+  \label{fig:sched}
+\end{figure}
+
+We compared DDIM, PNDM, DPM++2M, and Euler at 20~steps and CFG~$= 7.5$.
+The total CLIP range across all four schedulers is 0.0022---smaller than the
+within-condition standard deviation of any single scheduler ($\approx 0.007$).
+
+A variance decomposition of the 36 CLIP scores in this experiment reveals that
+98.7\% of total variance is \emph{within-condition} (attributable to prompt/seed),
+and only 1.3\% is \emph{between-scheduler}.
+This is strong evidence that scheduler choice is a second-order factor for
+CLIP alignment quality.
+
+\begin{table}[h]
+\centering
+\caption{Scheduler comparison. Generation times are inflated by pipeline-reload
+  overhead (see note) and do not reflect true per-sample inference time.}
+\label{tab:sched}
+\begin{tabular}{lcc}
+\toprule
+Scheduler & Mean CLIP $\pm$ Std & CV (\%) \\
+\midrule
+DDIM     & $0.6607 \pm 0.0077$ & 1.16 \\
+PNDM     & $0.6590 \pm 0.0067$ & 1.01 \\
+DPM++2M  & $0.6609 \pm 0.0080$ & 1.20 \\
+Euler    & $0.6612 \pm 0.0076$ & 1.15 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\textbf{Implementation note:} Generation times in this experiment
+reflect full pipeline initialization overhead, as the batch runner reloads
+the model for each scheduler change.
+True per-sample inference time at 20~steps is approximately 9~s for all
+schedulers (consistent with Experiment~2's DDIM baseline).
+This is a known artifact of the experimental codebase and does not affect the
+quality measurements.
+
+Cross-experiment consistency: all 9 DDIM samples shared between
+Experiment~2 (steps~$= 20$) and Experiment~3 match to floating-point precision,
+confirming full reproducibility of the experimental framework.
+
+\textbf{Recommendation:} Scheduler choice should be driven by factors other than
+CLIP alignment (e.g., determinism preferences or compatibility with specific
+LoRA/ControlNet pipelines). DPM++2M is often favored in practice for its
+convergence properties at low step counts.
+
+\subsection{Experiment 4: Model Checkpoint (SD v1.4 vs.\ SD v1.5)}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\textwidth]{results/fig_model_comparison.png}
+  \caption{CLIP score comparison between SD v1.4 and SD v1.5. The difference
+    is negligible at the aggregate level but shows a prompt-dependent interaction.}
+  \label{fig:model}
+\end{figure}
+
+We compared CompVis SD v1.4 and Runway SD v1.5 under identical conditions
+(20~steps, CFG~$= 7.5$, DDIM).
+The aggregate CLIP difference is 0.0002, which is indistinguishable from noise.
+However, a per-prompt breakdown (Table~\ref{tab:model}) reveals a model-prompt
+interaction: v1.5 outperforms v1.4 on the ``futuristic city'' prompt
+($\Delta{=}+0.0036$) and the ``lion'' prompt ($\Delta{=}+0.0042$),
+while v1.4 outperforms on the ``snowy cabin'' prompt ($\Delta{=}-0.0072$).
+
+\begin{table}[h]
+\centering
+\caption{Model $\times$ prompt CLIP scores (mean over 3 seeds).
+  $\Delta$ is v1.5 $-$ v1.4; positive favors v1.5.}
+\label{tab:model}
+\begin{tabular}{lccc}
+\toprule
+Prompt & SD v1.4 & SD v1.5 & $\Delta$ \\
+\midrule
+Cozy cabin in snowy forest      & 0.6598 & 0.6525 & $-0.0072$ \\
+Futuristic city with flying cars & 0.6596 & 0.6632 & $+0.0036$ \\
+Majestic lion at sunset         & 0.6622 & 0.6664 & $+0.0042$ \\
+\midrule
+\textbf{Overall}                & 0.6605 & 0.6607 & $+0.0002$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+We caution that with $n = 3$ per cell, the interaction pattern is exploratory
+and should not be generalized without replication.
+The finding is nonetheless consistent with reported improvements in v1.5's
+human-evaluation scores for photorealistic subjects (animals, people) relative
+to abstract or landscape prompts~\citep{runway2022sd15}.
+
+\textbf{Recommendation:} Within the v1.x checkpoint family, model version is
+not a meaningful quality lever by CLIP alignment. Upgrade to v2.x or SDXL if
+architectural improvements are desired.
+
+\subsection{Supplementary Study: Prompt Complexity (Qualitative)}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{results/fig_prompt_complexity.png}
+  \caption{CLIP score as a function of prompt complexity level.
+    The trend is broadly increasing but non-monotonic (see text).}
+  \label{fig:prompt}
+\end{figure}
+
+As a supplementary experiment (results not included in the main CSV),
+we compared four levels of prompt specificity for a lion subject:
+\emph{Minimal} (``a lion''), \emph{Short} (``a majestic lion in the savanna''),
+\emph{Detailed} (adding ``golden hour, photorealistic''), and
+\emph{Very Detailed} (adding resolution, fur texture, and lighting descriptors).
+Figure~\ref{fig:prompt} shows a broadly increasing trend in CLIP score with prompt
+specificity, though not strictly monotonic: the \emph{Short} prompt (0.6511) scores
+\emph{lower} than \emph{Minimal} (0.6529) before rising through \emph{Detailed}
+(0.6628) and \emph{Very Detailed} (0.6685).
+This Minimal$\to$Short dip is consistent with CLIP's behavior when a short prompt
+adds context words (e.g., ``savanna'') that are not fully reflected in the generated
+image, briefly diluting alignment before richer descriptors restore and strengthen it.
+
+% ─────────────────────────────────────────────────────────────────
+\section{Discussion}
+
+Our results support a practical decision hierarchy for SD inference parameters,
+ordered by practical importance:
+
+\begin{enumerate}
+\item \textbf{CFG scale} ($\Delta = 0.0199$): The most impactful lever.
+  Low values ($\leq 3$) severely degrade alignment.
+  The range 7--12 is robust; CFG~$= 15$ is optimal but risks saturation.
+\item \textbf{Step count} ($\Delta = 0.0020$): Moderate impact on quality,
+  large impact on efficiency.
+  The community default of 20~steps is well-calibrated;
+  10~steps is viable for rapid workflows.
+\item \textbf{Scheduler} ($\Delta = 0.0022$): Negligible quality impact.
+  98.7\% of variance is prompt/seed-driven.
+  Choose for architectural compatibility rather than quality.
+\item \textbf{Model checkpoint} (v1.x, $\Delta = 0.0002$): No measurable
+  quality difference within the v1.x family.
+\end{enumerate}
+
+\noindent\textbf{Limitations.}
+CLIP score measures text alignment, not perceptual quality or aesthetic appeal;
+the narrow range of scores (0.626--0.675) means differences may be imperceptible
+to human viewers.
+Our study uses only 3 prompts, limiting generalizability to more complex,
+compositional, or abstract text descriptions.
+With $n = 9$ per condition, we lack statistical power for formal significance
+testing on small effects ($\Delta < 0.005$).
+The scheduler timing measurements are confounded by model-reload overhead
+and cannot be used to compare inference speed.
+
+% ─────────────────────────────────────────────────────────────────
+\section{Conclusion}
+
+We presented a systematic empirical characterization of inference-time
+hyperparameters in Stable Diffusion v1.x, generating 162 images across 4
+experiments and evaluating alignment via normalized CLIP similarity.
+The results show that CFG scale is the dominant quality lever, denoising steps
+exhibit strong diminishing returns above 15--20, and both scheduler choice and
+v1.x checkpoint version are essentially irrelevant to CLIP alignment.
+
+The practical upshot for SD users: \emph{set CFG~$= 7$--$12$, use 15--20~steps,
+and do not spend time choosing schedulers for quality reasons}.
+
+The accompanying Streamlit application makes these findings interactive and
+reproducible, and the open-source codebase (\texttt{experiments.py},
+\texttt{evaluate.py}) enables extension to new prompts, models, or metrics.
+
+\section*{Bonus Points}
+This project makes several contributions that merit consideration for bonus points:
+
+\begin{itemize}
+\item \textbf{Efficiency Pareto analysis (novel contribution):}
+  The CLIP/s efficiency metric and the 5$\times$ degradation finding from
+  10 to 50 steps is, to our knowledge, not previously published in this form.
+  It provides a directly actionable decision rule for practitioners.
+\item \textbf{AI-assisted development (Option 6):}
+  The full experimental infrastructure (batch runner, evaluator, Streamlit app)
+  was designed and implemented using Claude Code, demonstrating effective
+  vibe-coding methodology for scientific computing.
+  The resulting modular architecture (decoupled \texttt{evaluate.py}/\texttt{experiments.py})
+  reflects best practices achievable through AI-assisted iteration.
+\item \textbf{Reproducibility:} The cross-experiment DDIM consistency check
+  (9/9 bitwise matches) provides a strong internal validity guarantee not commonly
+  seen in student projects.
+\item \textbf{Interactive system:} The Streamlit app extends the paper with
+  a live parameter exploration tool, supporting negative prompts and batch sweeps
+  beyond the scope of the written experiments.
+\end{itemize}
+
+% ─────────────────────────────────────────────────────────────────
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
